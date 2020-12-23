@@ -1,6 +1,4 @@
 body{height:685px;
-	border: 10px solid pink;
-
 }
 
 
@@ -22,11 +20,10 @@ background-repeat: no-repeat;
 #monstres{display: flex;
   justify-content: space-around;
 align-items:flex-end;
-border: 5px solid red;
 height:450px;
 }
 
-#monstre1{border: 4px solid brown;
+#monstre1{
 margin-left:200px;
 width: 210px;
 height: 290px;
@@ -37,15 +34,14 @@ flex-direction: column;
 
 #infomonstre1{display: flex;
 justify-content: space-around;
-border: 5px solid black;
 }
-#imgScorpion1{border: 2px solid red;
+#imgScorpion1{
   block-size: 300px;
 }
 
   
 
-#monstre2{border: 4px solid brown;
+#monstre2{
 margin-bottom:50px;
 width: 480px;
 height: 340px;
@@ -55,13 +51,13 @@ flex-direction: column;
 }
 #infomonstre2{display: flex;
   justify-content: space-around;
-  border: 5px solid black;
+  
   }
-#imgDragon{border: 2px solid red;
+#imgDragon{
   block-size: 300px;
 }
 
-#monstre3{border: 4px solid brown;
+#monstre3{
 margin-right:200px;
 width: 210px;
 height: 290px;
@@ -71,20 +67,20 @@ flex-direction: column;}
 
 #infomonstre3{display: flex;
   justify-content: space-around;
-  border: 5px solid black;
+  
   }
-#imgScorpion2{border: 2px solid red;
+#imgScorpion2{
   block-size: 300px;
 }
 
-#box1{border:5px solid black;
+#box1{
 display:flex;
 height:105px;}
 
 #select{background-color:red;
 width: 40px;}
 
-#actions{border:5px solid black;
+#actions{
 background-color:red;
 display:flex;
 flex-direction:column;
@@ -98,7 +94,6 @@ width:900px;}
 
 #infoPersos{display: flex;
   justify-content: space-around;
-  border: 5px solid green;
   height:100px;
 }
 
@@ -145,7 +140,6 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 align-content:space-between;
-border: 3px solid black;
 width: 300px;
 height: 100px;
 background-color:pink;}

@@ -27,6 +27,10 @@ var atqmonstre2 = 30
 var pvmonstre3 = 250
 var atqmonstre3 = 15
 
+var compteuratq1 = 0
+var compteurdef1 = 0
+var compteurspecial1 =0
+
 var tour = 1
 var monstreChoisit = 0
 
@@ -80,63 +84,85 @@ imgScorpion2.onmouseover=function(){
 
 buttonattaque.onclick = function(){
     monstreChoisit = prompt("Veuillez choisir un monstre à attaquer: 1=Scorpion 1____2=DRAGON____3=SCOPRION 2")
-    if(monstreChoisit == 1){ 
-        pvmonstre1 = pvmonstre1 -atqp1
-        document.getElementById("pvmonstre1").innerHTML = pvmonstre1
-        document.getElementById("infoAction").innerHTML = "Vous infligez "+atqp1+" dégat au SCORPION 1";
-        if(pvmonstre1 <= 0){
-            document.getElementById("monstre1").style.visibility="hidden";
-            document.getElementById("infoAction").innerHTML = "Le scorpion 1 est mort!!";
-            testVictoire();
+    if(compteuratq1 < 1){ 
+
+        if(monstreChoisit == 1){ 
+            pvmonstre1 = pvmonstre1 -atqp1
+            document.getElementById("pvmonstre1").innerHTML = pvmonstre1
+            document.getElementById("infoAction").innerHTML = "Vous infligez "+atqp1+" dégat au SCORPION 1";
+            if(pvmonstre1 <= 0){
+                document.getElementById("monstre1").style.visibility="hidden";
+                document.getElementById("infoAction").innerHTML = "Le scorpion 1 est mort!!";
+                testVictoire();
+            }
         }
-    }
-    if(monstreChoisit == 2){ 
-        pvmonstre2 = pvmonstre2 -atqp1
-        document.getElementById("pvmonstre2").innerHTML = pvmonstre2
-        document.getElementById("infoAction").innerHTML = "Vous infligez "+atqp1+" dégat au DRAGON";
-        if(pvmonstre2 <= 0){
-            document.getElementById("monstre2").style.visibility="hidden";
-            document.getElementById("infoAction").innerHTML = "Le dragon est mort!!";
-            testVictoire();
+        if(monstreChoisit == 2){ 
+            pvmonstre2 = pvmonstre2 -atqp1
+            document.getElementById("pvmonstre2").innerHTML = pvmonstre2
+            document.getElementById("infoAction").innerHTML = "Vous infligez "+atqp1+" dégat au DRAGON";
+            if(pvmonstre2 <= 0){
+                document.getElementById("monstre2").style.visibility="hidden";
+                document.getElementById("infoAction").innerHTML = "Le dragon est mort!!";
+                testVictoire();
+            }
         }
-    }
-    if(monstreChoisit == 3){ 
-        pvmonstre3 = pvmonstre3 -atqp1
-        document.getElementById("pvmonstre3").innerHTML = pvmonstre3
-        document.getElementById("infoAction").innerHTML = "Vous infligez "+atqp1+" dégat au SCORPION 2";
-        if(pvmonstre3 <= 0){
-            document.getElementById("monstre3").style.visibility="hidden";
-            document.getElementById("infoAction").innerHTML = "Le scorpion 2 est mort!!";
-            testVictoire();
+        if(monstreChoisit == 3){ 
+            pvmonstre3 = pvmonstre3 -atqp1
+            document.getElementById("pvmonstre3").innerHTML = pvmonstre3
+            document.getElementById("infoAction").innerHTML = "Vous infligez "+atqp1+" dégat au SCORPION 2";
+            if(pvmonstre3 <= 0){
+                document.getElementById("monstre3").style.visibility="hidden";
+                document.getElementById("infoAction").innerHTML = "Le scorpion 2 est mort!!";
+                testVictoire();
+            }
         }
+
+    }   
+    if(compteuratq1 >=1){
+        document.getElementById('attaque').disabled = true 
     }
     tour = tour +1 
+    compteuratq1 = 1
     attaqueMonstre();
 }
 
 
 buttondefense.onclick = function(){ 
-    pvp1 = pvp1 + defp1
-    document.getElementById("vie1").innerHTML = pvp1
-    document.getElementById("infoAction").innerHTML = "Vous restez en défense."
-    tour = tour +1 
-    attaqueMonstre();
+    if(compteurdef1 < 1){ 
+        pvp1 = pvp1 + defp1
+        document.getElementById("vie1").innerHTML = pvp1
+        document.getElementById("infoAction").innerHTML = "Vous restez en défense."
+        tour = tour +1 
+        attaqueMonstre();
+    }
+    if(compteurdef1 >=1){
+        document.getElementById('defense').disabled = true 
+    compteurdef1 = 1
+    }
 }
 
 
 buttonspecial.onclick = function(){
-    if(manap1 >= 25){ 
-        pvp1 = pvp1 + 100
-        document.getElementById("vie1").innerHTML = pvp1
-        manap1 = manap1 - 25
-        document.getElementById("mana1").innerHTML = manap1
-        document.getElementById("infoAction").innerHTML = "Vous soignez 50 points de vie et concommez 25 points de mana"
+    if(compteurspecial1 < 1){ 
+
+        if(manap1 >= 25){ 
+            pvp1 = pvp1 + 100
+            document.getElementById("vie1").innerHTML = pvp1
+            manap1 = manap1 - 25
+            document.getElementById("mana1").innerHTML = manap1
+            document.getElementById("infoAction").innerHTML = "Vous soignez 50 points de vie et concommez 25 points de mana"
+        }
+        if(manap1<25){
+            document.getElementById("infoAction").innerHTML = "vous n'avez pas assez de mana"
+            document.getElementById('special').disabled = true 
+        } 
     }
-    if(manap1<25){
-        document.getElementById("infoAction").innerHTML = "vous n'avez pas assez de mana"
-    } 
+    if(compteurspecial1 >=1){
+        document.getElementById('special').disabled = true 
+    }
     tour = tour +1 
     attaqueMonstre();
+    compteurspecial1 = 1
 }
 
 var attaqueMonstre = function(){
