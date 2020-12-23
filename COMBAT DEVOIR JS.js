@@ -30,7 +30,6 @@ var atqmonstre3 = 15
 var compteuratq1 = 0
 var compteurdef1 = 0
 var compteurspecial1 =0
-
 var tour = 1
 var monstreChoisit = 0
 
@@ -90,7 +89,6 @@ buttonattaque.onclick = function(){
             pvmonstre1 = pvmonstre1 -atqp1
             document.getElementById("pvmonstre1").innerHTML = pvmonstre1
             document.getElementById("infoAction").innerHTML = "Vous infligez "+atqp1+" dégat au SCORPION 1";
-            compteuratq1 = 1
             if(pvmonstre1 <= 0){
                 document.getElementById("monstre1").style.visibility="hidden";
                 document.getElementById("infoAction").innerHTML = "Le scorpion 1 est mort!!";
@@ -101,7 +99,6 @@ buttonattaque.onclick = function(){
             pvmonstre2 = pvmonstre2 -atqp1
             document.getElementById("pvmonstre2").innerHTML = pvmonstre2
             document.getElementById("infoAction").innerHTML = "Vous infligez "+atqp1+" dégat au DRAGON";
-            compteuratq1 = 1
             if(pvmonstre2 <= 0){
                 document.getElementById("monstre2").style.visibility="hidden";
                 document.getElementById("infoAction").innerHTML = "Le dragon est mort!!";
@@ -112,7 +109,6 @@ buttonattaque.onclick = function(){
             pvmonstre3 = pvmonstre3 -atqp1
             document.getElementById("pvmonstre3").innerHTML = pvmonstre3
             document.getElementById("infoAction").innerHTML = "Vous infligez "+atqp1+" dégat au SCORPION 2";
-            compteuratq1 = 1
             if(pvmonstre3 <= 0){
                 document.getElementById("monstre3").style.visibility="hidden";
                 document.getElementById("infoAction").innerHTML = "Le scorpion 2 est mort!!";
@@ -124,14 +120,8 @@ buttonattaque.onclick = function(){
     if(compteuratq1 >=1){
         document.getElementById('attaque').disabled = true 
     }
-    if(compteurspecial1 = 1){
-        compteurspecial1 = 0
-    }
-    if(compteurdef1 = 1){
-        compteurdef1 = 0
-    }
     tour = tour +1 
-    
+    compteuratq1 = 1
     attaqueMonstre();
 }
 
@@ -142,18 +132,11 @@ buttondefense.onclick = function(){
         document.getElementById("vie1").innerHTML = pvp1
         document.getElementById("infoAction").innerHTML = "Vous restez en défense."
         tour = tour +1 
-        compteurdef1 = 1
         attaqueMonstre();
     }
     if(compteurdef1 >=1){
         document.getElementById('defense').disabled = true 
     compteurdef1 = 1
-    }
-    if(compteuratq1 = 1){
-        compteuratq1 = 0
-    }
-    if(compteurspecial1 = 1){
-        compteurspecial1 = 0
     }
 }
 
@@ -167,7 +150,6 @@ buttonspecial.onclick = function(){
             manap1 = manap1 - 25
             document.getElementById("mana1").innerHTML = manap1
             document.getElementById("infoAction").innerHTML = "Vous soignez 50 points de vie et concommez 25 points de mana"
-            compteurspecial1 = 1
         }
         if(manap1<25){
             document.getElementById("infoAction").innerHTML = "vous n'avez pas assez de mana"
@@ -177,15 +159,9 @@ buttonspecial.onclick = function(){
     if(compteurspecial1 >=1){
         document.getElementById('special').disabled = true 
     }
-    tour = tour +1 
-    attaqueMonstre();
-    compteurspecial1 = 1
-    if(compteuratq1 = 1){
-        compteuratq1 = 0
-    }
-    if(compteurdef1 = 1){
-        compteurdef1 = 0
-    }
+        tour = tour +1 
+        attaqueMonstre();
+        
 }
 
 var attaqueMonstre = function(){
